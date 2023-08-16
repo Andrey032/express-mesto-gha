@@ -3,7 +3,7 @@ const Card = require('../models/card');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const {
-  NOT_FOUND_CODE, BAD_REQUEST_CODE, SERVER_ERROR_CODE, OK_CODE, CREATED_CODE,
+  OK_CODE, CREATED_CODE,
 } = require('../utils/constants');
 
 module.exports.createCard = (req, res, next) => {
