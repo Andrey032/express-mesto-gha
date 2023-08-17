@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 const cardSchema = new mongoose.Schema({
   name: {
@@ -11,8 +12,8 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Обязательное поле для заполнения'],
     validate: {
-      validator(url) {
-        return /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_+.~#?&/=]*)$/.test(url);
+      validator: function checkUrl(str) {
+        return str && validator.isURL(str);
       },
       message: 'Введите корректный URL адрес',
     },

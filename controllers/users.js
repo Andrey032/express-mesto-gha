@@ -38,6 +38,12 @@ module.exports.getUsers = (req, res, next) => {
     .catch(next);
 };
 
+module.exports.getMe = (req, res, next) => {
+  User.findById(req.user._id)
+    .then((user) => res.status(OK_CODE).send(user))
+    .catch(next);
+};
+
 module.exports.getUserById = (req, res, next) => {
   User.findById(req.params.userId)
     .orFail()
